@@ -1,16 +1,26 @@
-//SERVER
-
 const http = require("http")
 const fs = require("fs")
-const myServer = http.createServer((req,res)=>{
-    const log =`${Date.now()} New req Received\n`
-    fs.appendFile('log.txt',log,()=>{
-        res.end("Hello from server, How are you doing today?")//append,response
-    })    
-    // console.log(req.headers)
-}) //webserver
-myServer.listen(8000,()=>console.log("Server Started"))
-//localhost:8000
-
-
-
+const server = http.createServer((req,res)=>{
+    //request handler
+    const log = `${Date.now()}: ${req.url}\n`
+    fs.appendFile("log.txt",log,()=>{
+        switch(req.url){
+            case '/':
+                res.end("Welcome to my server")
+            break;
+            case '/about':
+                res.end("Hi I am Chetna Dua. Welcome to my server")
+            break;
+            case '/contact':
+                res.end("Hi my contact number is : 9896621288")
+            break;
+            case '/info':
+                res.end("My birthdate is 10102002")
+            break;
+            default:
+                res.end("ERROR 404, page not found")
+                
+        }
+    })
+})
+server.listen(8000)
