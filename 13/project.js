@@ -4,7 +4,7 @@ const PORT_NUMBER=8000
 
 const app = express()
 //browser
-app.get("/users",(req,res)=>{
+app.get("/users/email",(req,res)=>{
     const html = `
     <ul>
         ${users.map((user)=>`<li>${user.email}</li>`).join("")}
@@ -14,13 +14,18 @@ app.get("/users",(req,res)=>{
 })
 //api
 app.get("/api/users",(req,res)=>{
-    return res.send(users)
+    return res.json(users)
 })
-//single user 
+//single user details
 app.get("/users/:id",(req,res)=>{
     const id = Number(req.params.id)
+    const user = users.find((user)=>user.id===id)
     const html = `
-    <div>Hi, ${users.find((user)=>user.id===id).first_name}</div>
+    <div>Hi, ${user.first_name}</div>
+    <ol>
+        <li>${user.email}</li>
+        <li>${user.gender}</li>
+    </ol>
     `
     return res.send(html)
 })
