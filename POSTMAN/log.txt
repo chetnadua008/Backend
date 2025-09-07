@@ -1,0 +1,10 @@
+GET : 
+ {"first_name":"Chetna","last_name":"Dua","email":"chetna34@gmail.com","gender":"Female","id":1001}
+POST : 
+ {"first_name":"John","last_name":"Doe","email":"com@example.com","gender":"Male","id":1002}
+PATCH : 
+ {"id":500,"first_name":"Traci","last_name":"Macbane","email":"abc123@example.com","gender":"Female"}
+DELETE : 
+ {"first_name":"Chetna","last_name":"Dua","email":"chetna34@gmail.com","gender":"Female","id":1001}
+GET : 
+ undefined
